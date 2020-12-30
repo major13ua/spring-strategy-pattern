@@ -14,7 +14,7 @@ import java.util.Optional;
 public class LoanProcessorRegistry {
 
     public enum LoanProcessorType {
-        CASE("case"), MAP("map"), ENUM_MAP("enum");
+        CASE("case"), MAP("map"), ENUM_MAP("enum"), GENERIC_ENUM_MAP("generic");
         public final String urlName;
         LoanProcessorType(String urlName) {
             this.urlName = urlName;
