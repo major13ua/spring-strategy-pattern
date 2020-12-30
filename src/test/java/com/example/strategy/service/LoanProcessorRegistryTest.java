@@ -17,17 +17,13 @@ class LoanProcessorRegistryTest {
 
     @Test
     void shouldReturnEmptyIfNoProcessorFound() {
-
         Optional<Boolean> undefinedStrategy = loanProcessorRegistry.evaluate("undefinedStrategy",
                 LoanRequest.builder().loanType(LoanType.SMALL).build());
-
         assertThat(undefinedStrategy).isEmpty();
-
     }
 
     @Test
     void shouldCallGenericLoanProcessorForSmallLoan() {
-
         Optional<Boolean> genericProcessorWithSmallStrategy = loanProcessorRegistry.evaluate("generic",
                 LoanRequest.builder().loanType(LoanType.SMALL).build());
 

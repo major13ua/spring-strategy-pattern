@@ -12,4 +12,5 @@ public interface ILoanProcessor {
     default void register(LoanProcessorRegistry registry){
         registry.register(getCode(), this);
     }
+
 }
