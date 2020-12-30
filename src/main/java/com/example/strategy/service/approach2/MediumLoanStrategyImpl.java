@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component("MEDIUM")
 @Slf4j
-public class MediumLoanProcessorImpl implements IApp2LoanProcessor{
+public class MediumLoanStrategyImpl implements ILoanStrategy {
     @Override
     public Boolean process(LoanRequest request) {
         log.info("medium impl for {}", request);

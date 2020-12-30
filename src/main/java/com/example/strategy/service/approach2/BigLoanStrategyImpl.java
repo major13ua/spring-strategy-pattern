@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component("BIG")
 @Slf4j
-public class BigLoanProcessorImpl implements IApp2LoanProcessor{
+public class BigLoanStrategyImpl implements ILoanStrategy {
     @Override
     public Boolean process(LoanRequest request) {
         log.info("big impl for {}", request);

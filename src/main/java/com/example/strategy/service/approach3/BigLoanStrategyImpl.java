@@ -7,17 +7,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class HugeLoanProcessorImpl implements IApp3LoanProcessor {
-
-    @Override
-    public Boolean process(LoanRequest request) {
-        log.info("huge impl for {}", request);
-        return true;
-    }
+public class BigLoanStrategyImpl implements ILoanStrategy {
 
     @Override
     public LoanType getCode() {
-        return LoanType.HUGE;
+        return LoanType.BIG;
+    }
+
+    @Override
+    public Boolean process(LoanRequest request) {
+        log.info("big impl for {}", request);
+        return true;
     }
 
 }

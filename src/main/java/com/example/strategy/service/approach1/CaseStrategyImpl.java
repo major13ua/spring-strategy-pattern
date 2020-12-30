@@ -2,6 +2,7 @@ package com.example.strategy.service.approach1;
 
 import com.example.strategy.model.LoanRequest;
 import com.example.strategy.service.ILoanProcessor;
+import com.example.strategy.service.LoanProcessorRegistry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -38,6 +39,11 @@ public class CaseStrategyImpl implements ILoanProcessor {
     protected Boolean smallCredit(LoanRequest request) {
         log.info("small impl for {}", request);
         return Boolean.TRUE;
+    }
+
+    @Override
+    public LoanProcessorRegistry.LoanProcessorType getCode() {
+        return LoanProcessorRegistry.LoanProcessorType.CASE;
     }
 
 }

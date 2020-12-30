@@ -11,7 +11,7 @@ class SmallLoanProcessorImplTest {
 
     @Test
     void shouldCalculateSmallLoan() {
-        SmallLoanProcessorImpl impl = new SmallLoanProcessorImpl();
+        SmallLoanStrategyImpl impl = new SmallLoanStrategyImpl();
         LoanRequest loan = new LoanRequest();
         loan.setLoanType(LoanType.SMALL);
         Boolean process = impl.process(loan);
@@ -20,7 +20,7 @@ class SmallLoanProcessorImplTest {
 
     @Test
     void shouldNotCalculateBigLoan() {
-        SmallLoanProcessorImpl impl = new SmallLoanProcessorImpl();
+        SmallLoanStrategyImpl impl = new SmallLoanStrategyImpl();
         LoanRequest loan = new LoanRequest();
         loan.setLoanType(LoanType.BIG);
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -30,7 +30,7 @@ class SmallLoanProcessorImplTest {
 
     @Test
     void shouldNotCalculateMediumLoan() {
-        SmallLoanProcessorImpl impl = new SmallLoanProcessorImpl();
+        SmallLoanStrategyImpl impl = new SmallLoanStrategyImpl();
         LoanRequest loan = new LoanRequest();
         loan.setLoanType(LoanType.MEDIUM);
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -40,7 +40,7 @@ class SmallLoanProcessorImplTest {
 
     @Test
     void shouldNotCalculateHugeLoan() {
-        SmallLoanProcessorImpl impl = new SmallLoanProcessorImpl();
+        SmallLoanStrategyImpl impl = new SmallLoanStrategyImpl();
         LoanRequest loan = new LoanRequest();
         loan.setLoanType(LoanType.HUGE);
         Assertions.assertThrows(IllegalArgumentException.class, () -> {

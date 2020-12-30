@@ -7,15 +7,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class SmallLoanProcessorImpl implements IApp3LoanProcessor {
+public class MediumLoanStrategyImpl implements ILoanStrategy {
+
     @Override
     public Boolean process(LoanRequest request) {
-        log.info("small impl for {}", request);
+        log.info("medium impl for {}", request);
         return true;
     }
 
     @Override
     public LoanType getCode() {
-        return LoanType.SMALL;
+        return LoanType.MEDIUM;
     }
+
 }

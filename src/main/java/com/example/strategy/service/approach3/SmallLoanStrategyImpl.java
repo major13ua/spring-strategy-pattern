@@ -1,20 +1,22 @@
-package com.example.strategy.service.approach2;
+package com.example.strategy.service.approach3;
 
 import com.example.strategy.model.LoanRequest;
 import com.example.strategy.model.LoanType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-@Component("SMALL")
+@Component
 @Slf4j
-public class SmallLoanProcessorImpl implements IApp2LoanProcessor{
+public class SmallLoanStrategyImpl implements ILoanStrategy {
+
     @Override
     public Boolean process(LoanRequest request) {
-        if (LoanType.SMALL != request.getLoanType()) {
-            throw new IllegalArgumentException("Only LoanType.SMALL supported");
-        }
-
         log.info("small impl for {}", request);
         return true;
+    }
+
+    @Override
+    public LoanType getCode() {
+        return LoanType.SMALL;
     }
 }

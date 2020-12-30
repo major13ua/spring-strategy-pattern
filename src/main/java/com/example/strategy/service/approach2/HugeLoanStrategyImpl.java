@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component("HUGE")
 @Slf4j
-public class HugeLoanProcessorImpl implements IApp2LoanProcessor{
+public class HugeLoanStrategyImpl implements ILoanStrategy {
     @Override
     public Boolean process(LoanRequest request) {
         log.info("huge impl for {}", request);

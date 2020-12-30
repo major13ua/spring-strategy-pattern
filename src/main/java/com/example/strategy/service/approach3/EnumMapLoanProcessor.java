@@ -2,6 +2,8 @@ package com.example.strategy.service.approach3;
 
 import com.example.strategy.model.LoanRequest;
 import com.example.strategy.model.LoanType;
+import com.example.strategy.service.ILoanProcessor;
+import com.example.strategy.service.LoanProcessorRegistry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -14,24 +16,29 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class EnumMapStrategyImpl {
+public class EnumMapLoanProcessor implements ILoanProcessor {
 
-    private final Map<LoanType, IApp3LoanProcessor> loanProcessors;
+    private final Map<LoanType, ILoanStrategy> loanProcessors;
 
-    public EnumMapStrategyImpl(List<IApp3LoanProcessor> processors) {
+    public EnumMapLoanProcessor(List<ILoanStrategy> processors) {
         loanProcessors = processors.stream()
                 .collect(Collectors.toMap(
-                        IApp3LoanProcessor::getCode,
+                        ILoanStrategy::getCode,
                         Function.identity(),
                         (l, r) -> {throw new IllegalArgumentException("Duplicate keys " + l + "and " + r + ".");},
                         () -> new EnumMap<>(LoanType.class)
                 ));
     }
 
+    @Override
+    public LoanProcessorRegistry.LoanProcessorType getCode() {
+        return LoanProcessorRegistry.LoanProcessorType.ENUM_MAP;
+    }
+
     public Boolean process(LoanRequest request) {
-        IApp3LoanProcessor processor = loanProcessors.get(request.getLoanType());
+        ILoanStrategy processor = loanProcessors.get(request.getLoanType());
         Objects.requireNonNull(processor, "No processor for " + request.getLoanType() + " found");
-        return processor.process(request);
+        return processor.evaluate(request);
     }
 
 }
